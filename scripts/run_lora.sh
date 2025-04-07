@@ -1,16 +1,16 @@
-load_model='xxx/RWKV7.pth'
-proj_dir='xxx/xxx'
-data_file='xxx/xxx'
+load_model='/content/RWKV-x070-World-0.1B-v2.8-20241210-ctx4096.pth'
+proj_dir='/content/drive/MyDrive/rwkv-finetune/output'
+data_file='/content/drive/MyDrive/rwkv-finetune/data'
 
-n_layer=32
-n_embd=2560
+n_layer=12
+n_embd=768
 
-micro_bsz=8
-epoch_save=1
+micro_bsz=1
+epoch_save=5
 epoch_steps=1000
 ctx_len=512
 
-lora_config='{"lora_load":"","lora_r":32,"lora_alpha":32,"lora_dropout":0.0}'
+lora_config='{"lora_load":"","lora_r":32,"lora_alpha":64,"lora_dropout":0.01}'
 
 
 python train.py --load_model $load_model \
