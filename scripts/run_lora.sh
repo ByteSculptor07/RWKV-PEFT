@@ -13,7 +13,7 @@ ctx_len=512
 lora_config='{"lora_load":"","lora_r":32,"lora_alpha":64,"lora_dropout":0.01}'
 
 
-python train.py --load_model $load_model \
+python RWKV-PEFT/train.py --load_model $load_model \
 --proj_dir $proj_dir --data_file $data_file \
 --vocab_size 65536 \
 --n_layer $n_layer --n_embd $n_embd \
