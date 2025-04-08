@@ -318,7 +318,7 @@ else:
                 return y
             @staticmethod
             def backward(ctx, dy):
-                assert all(i.dtype==torch.bfloat16 for i in [dy])
+                assert all(i.dtype == torch.float16 for i in [dy])
                 assert all(i.is_contiguous() for i in [dy])
                 w,q,k,v,z,b,s,sa = ctx.saved_tensors
                 dw,dq,dk,dv,dz,db = [torch.empty_like(x) for x in [w,q,k,v,z,b]]
