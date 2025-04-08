@@ -1,6 +1,6 @@
-load_model='/content/RWKV-x070-World-0.1B-v2.8-20241210-ctx4096.pth'
-proj_dir='/content/drive/MyDrive/rwkv-finetune/output'
-data_file='/content/drive/MyDrive/rwkv-finetune/data'
+load_model='RWKV-x070-World-0.1B-v2.8-20241210-ctx4096.pth'
+proj_dir='output'
+data_file='data'
 
 n_layer=12
 n_embd=768
