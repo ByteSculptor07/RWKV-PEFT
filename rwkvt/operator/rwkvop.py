@@ -307,14 +307,8 @@ else:
             @staticmethod
             def forward(ctx, w,q,k,v,z,b):
                 B,T,H,C = w.shape 
-                w = w.to(torch.bfloat16)
-                q = q.to(torch.bfloat16)
-                k = k.to(torch.bfloat16)
-                v = v.to(torch.bfloat16)
-                z = z.to(torch.bfloat16)
-                b = b.to(torch.bfloat16)
                 assert T%CHUNK_LEN == 0
-                assert all(i.dtype==torch.bfloat16 for i in [w,q,k,v,z,b])
+                assert all(i.dtype in [torch.bfloat16, torch.float16] for i in [w, q, k, v, z, b])
                 assert all(i.is_contiguous() for i in [w,q,k,v,z,b])
                 y = torch.empty_like(v)
                 s = torch.empty(B,H,T//CHUNK_LEN,C,C, dtype=torch.float32,device=w.device)
