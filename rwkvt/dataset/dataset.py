@@ -189,7 +189,13 @@ class MyDataset(Dataset):
         return self.args.epoch_steps * self.args.micro_bsz
 
     def __getitem__(self, idx):
-        idx = self.index_manager.get_next_idx(idx_t=idx) if self.index_manager else idx
+        # Get next index from index_manager, if it exists
+        if self.index_manager:
+            idx = self.index_manager.get_next_idx(idx_t=idx)
+            # Ensure idx is within bounds after fetching the next index
+            if idx >= len(self._index):
+                idx = len(self._index) - 1  # Adjust to the last valid index
+    
         args = self.args
         rank = self.rank
         epoch = self.real_epoch
