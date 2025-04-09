@@ -193,8 +193,8 @@ class MyDataset(Dataset):
         if self.index_manager:
             idx = self.index_manager.get_next_idx(idx_t=idx)
             # Ensure idx is within bounds after fetching the next index
-            if idx >= len(self._index):
-                idx = len(self._index) - 1  # Adjust to the last valid index
+            if idx >= len(self.data):
+                idx = len(self.data) - 1  # Adjust to the last valid index
     
         args = self.args
         rank = self.rank
